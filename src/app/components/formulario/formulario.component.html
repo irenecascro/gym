@@ -1,0 +1,39 @@
+<section class="container mt-5">
+  <div class="card p-4 shadow">
+    <h3 class="text-center">Introduce el ejercicio</h3>
+    <hr>
+    <form novalidate [formGroup]="form" (ngSubmit)="getDataForm()">
+      <div class="my-2">
+        <label for="title">Titulo del ejercicio</label>
+        <input class="form-control" type="text" id="title" formControlName="title">
+
+        <small class="p-1 my-1 text-danger" *ngIf="checkControl('title','required')">El campo es obligatorio</small>
+
+      </div>
+
+      <div class="my-2">
+        <label for="time">Tiempo del ejercicio</label>
+        <input class="form-control" type="text" id="time" formControlName="time">
+
+        <small class="p-1 my-1 text-danger" *ngIf="checkControl('time','required')">El campo es obligatorio</small>
+
+        <small class="p-1 my-1 text-danger" *ngIf="checkControl('time','pattern')">El campo solo puede ser de tipo
+          numerico</small>
+
+      </div>
+
+      <div class="my-2">
+        <label for="rep">Número de repeticiones</label>
+        <input class="form-control" type="text" id="rep" formControlName="rep">
+
+        <small class="p-1 my-1 text-danger" *ngIf="checkControl('rep','required')">El campo es obligatorio</small>
+
+        <small class="p-1 my-1 text-danger" *ngIf="checkControl('rep','pattern')">El campo solo puede ser de tipo
+          numerico</small>
+
+      </div>
+
+      <input type="submit" value="Guardar" class="btn btn-danger" [disabled]="!form.valid">
+    </form>
+  </div>
+</section>
